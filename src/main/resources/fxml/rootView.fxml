@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="root" stylesheets="@../css/hospital.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE">
          <tabs>

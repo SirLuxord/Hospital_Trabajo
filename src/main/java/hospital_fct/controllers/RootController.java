@@ -31,8 +31,8 @@ public class RootController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         citasTab.setContent(citaController.getRoot());
         doctoresTab.setContent(doctorController.getRoot());
-        operacionesTab.setContent(operacionController.getRoot());
         pacientesTab.setContent(pacienteController.getRoot());
+        operacionesTab.setContent(operacionController.getRoot());
     }
 
     public RootController() {
@@ -66,7 +66,35 @@ public class RootController implements Initializable {
         HospitalFCTApp.ocultarRoot();
     }
 
+    public DoctorController getDoctorController() {
+        return doctorController;
+    }
+
+    public void setDoctorController(DoctorController doctorController) {
+        this.doctorController = doctorController;
+    }
+
+    public OperacionController getOperacionController() {
+        return operacionController;
+    }
+
+    public void setOperacionController(OperacionController operacionController) {
+        this.operacionController = operacionController;
+    }
+
     public BorderPane getRoot() {
         return root;
+    }
+    public CitaController getCitaController() {
+        return citaController;
+    }
+    public void setCitaController(CitaController citaController) {
+        this.citaController = citaController;
+    }
+    public PacienteController getPacienteController() {
+        return pacienteController;
+    }
+    public void setPacienteController(PacienteController pacienteController) {
+        this.pacienteController = pacienteController;
     }
 }

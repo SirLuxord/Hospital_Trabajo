@@ -13,11 +13,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static hospital_fct.HospitalFCTApp.rootController;
+
 public class HospitalController implements Initializable {
 
     // Model
 
     public static String hospital;
+
 
     // View
 
@@ -64,6 +67,12 @@ public class HospitalController implements Initializable {
     void onSelectHospitalAction(ActionEvent event) {
         HospitalFCTApp.mostrarRoot();
         HospitalFCTApp.ocultarHospital();
+        System.out.println("Hospital seleccionado: " + hospitalComboBox.getSelectionModel().getSelectedItem());
+        System.out.println("Hospital: " + hospital);
+        rootController.getDoctorController().actualizarListaDoctores();
+        rootController.getOperacionController().buscarOperacion("", "", "");
+        rootController.getCitaController().buscarCita("", "", "");
+        rootController.getPacienteController().actualizarListaPacientes();
     }
 
     public BorderPane getRoot() {

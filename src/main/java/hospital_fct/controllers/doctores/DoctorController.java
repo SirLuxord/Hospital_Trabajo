@@ -98,7 +98,7 @@ public class DoctorController implements Initializable {
         doctorTable.getColumns().remove(idSectorColumn);
 
         SplitPane.setResizableWithParent(modifiedDoctorController.getRoot() , false);
-
+        buscarDoctor("", "");
     }
 
     public DoctorController() {
@@ -179,7 +179,6 @@ public class DoctorController implements Initializable {
                 }
                 listaDoctor.remove(doctor);
             }
-            buscarDoctor("", "");
         }
     }
 
@@ -317,6 +316,11 @@ public class DoctorController implements Initializable {
             System.out.println("No se ha seleccionado ningún doctor.");
             return null;
         }
+    }
+
+    public void actualizarListaDoctores() {
+        listaDoctor.clear();
+        listaDoctor.addAll(buscarDoctor("", ""));
     }
 
     public void insetarDoctor(Doctor doctor) {

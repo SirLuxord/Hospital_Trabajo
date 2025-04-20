@@ -13,7 +13,7 @@ public class HospitalFCTApp extends Application {
 
     private static HospitalController hospitalController = new HospitalController();
     private static LoginController loginController = new LoginController();
-    private static RootController rootController = new RootController();
+    public static RootController rootController = new RootController();
 
     // Login
 

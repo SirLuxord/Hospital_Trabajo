@@ -181,6 +181,7 @@ public class PacienteController implements Initializable {
                 e.printStackTrace();
             }
         }
+        buscarPaciente("","");
     }
 
     @FXML
@@ -247,6 +248,8 @@ public class PacienteController implements Initializable {
         this.tablaAlergias = tablaAlergias;
     }
 
+
+
     public List<Paciente> buscarPaciente(String opcion, String parametro) {
         List<Paciente> pacientes = FXCollections.observableArrayList();
 
@@ -268,7 +271,6 @@ public class PacienteController implements Initializable {
                 paciente.setEmailPaciente(resultSet.getString("Email"));
                 paciente.setTelefono(resultSet.getString("Telefono"));
                 paciente.setTipoSangre(resultSet.getString("TipoSangre"));
-                //paciente.setAlergia(resultSet.getString("Alergias"));
                 pacientes.add(paciente);
             }
         } catch (SQLException e) {
@@ -340,6 +342,10 @@ public class PacienteController implements Initializable {
         }
     }
 
+    public void actualizarListaPacientes() {
+        listaPaciente.clear();
+        listaPaciente.addAll(buscarPaciente("", ""));
+    }
     public static int getAlergia(Connection connection, String sector) throws SQLException {
         String getIdAlergiaQuery = "SELECT IdAlergia FROM Alergias WHERE Nombre = ?";
 
