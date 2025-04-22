@@ -1,8 +1,12 @@
 package hospital_fct.controllers.citas;
 
 import hospital_fct.CreateDataBase;
+import hospital_fct.controllers.doctores.DoctorController;
+import hospital_fct.controllers.pacientes.PacienteController;
 import hospital_fct.models.Cita;
+import hospital_fct.models.Doctor;
 import hospital_fct.models.Estado;
+import hospital_fct.models.Paciente;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +30,8 @@ public class ModifiedCitaController implements Initializable {
 
     private CitaController citaController;
     private ObjectProperty<Cita> citaModify = new SimpleObjectProperty<>(new Cita());
+    private DoctorController doctorController = new DoctorController();
+    private PacienteController pacienteController = new PacienteController();
 
 
     @Override
@@ -166,12 +172,22 @@ public class ModifiedCitaController implements Initializable {
 
     @FXML
     void onSelectDoctorAction(ActionEvent event) {
-
+        Doctor doctor = doctorController.seleccionarDoctor();
+        if (doctor != null) {
+            doctorTextField.setText(doctor.getNombreDoctor());
+            citaModify.get().setIdDoctor(doctor.getIdDoctor());
+        }
+        citaController.buscarCita("","","");
     }
 
     @FXML
     void onSelectPacienteAction(ActionEvent event) {
-
+        Paciente paciente = pacienteController.seleccionarPaciente();
+        if (paciente != null) {
+            pacienteTextField.setText(paciente.getNombrePaciente());
+            citaModify.get().setIdPaciente(paciente.getIdPaciente());
+        }
+        citaController.buscarCita("","","");
     }
 
     public ComboBox<Estado> getEstadoComboBox() {

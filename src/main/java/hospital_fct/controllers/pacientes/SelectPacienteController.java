@@ -42,7 +42,6 @@ public class SelectPacienteController implements Initializable {
         emailPacienteColumn.setCellValueFactory(v -> v.getValue().emailPacienteProperty());
         telefonoPacienteColumn.setCellValueFactory(v -> v.getValue().telefonoProperty());
         sangrePacienteColumn.setCellValueFactory(v -> v.getValue().tipoSangreProperty());
-        alergiaPacienteColumn.setCellValueFactory(v -> v.getValue().alergiaProperty());
 
         // Table binding
         pacienteTable.itemsProperty().bind(listaPaciente);
@@ -62,9 +61,6 @@ public class SelectPacienteController implements Initializable {
         }
     }
 
-
-    @FXML
-    private TableColumn<Paciente, String> alergiaPacienteColumn;
 
     @FXML
     private TableColumn<Paciente, String> apellidoPacienteColumn;

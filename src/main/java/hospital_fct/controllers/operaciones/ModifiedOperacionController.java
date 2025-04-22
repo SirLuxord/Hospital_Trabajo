@@ -2,8 +2,10 @@ package hospital_fct.controllers.operaciones;
 
 import hospital_fct.CreateDataBase;
 import hospital_fct.controllers.doctores.DoctorController;
+import hospital_fct.controllers.pacientes.PacienteController;
 import hospital_fct.models.Doctor;
 import hospital_fct.models.Operacion;
+import hospital_fct.models.Paciente;
 import hospital_fct.models.Sectores;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -33,6 +35,8 @@ public class ModifiedOperacionController implements Initializable {
 
     private OperacionController operacionController;
     private ObjectProperty<Operacion> operacionModify = new SimpleObjectProperty<>(new Operacion());
+    private PacienteController pacienteController = new PacienteController();
+    private DoctorController doctorController = new DoctorController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -128,12 +132,24 @@ public class ModifiedOperacionController implements Initializable {
 
     @FXML
     void onSelectDoctoresAction(ActionEvent event) {
+        doctorController.seleccionarDoctor();
 
     }
 
     @FXML
     void onSelectPacienteAction(ActionEvent event) {
+        Paciente paciente = pacienteController.seleccionarPaciente();
+        if (paciente != null) {
+            pacienteTextField.setText(paciente.getNombrePaciente());
+            operacionModify.get().setIdPaciente(paciente.getIdPaciente());
 
+            try (Connection connection = DriverManager.getConnection(CreateDataBase.url)){
+                int idSector = getIdSector(connection, operacionModify.get().getNombreSector());
+                operacionModify.get().setIdSector(idSector);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public TextArea getDoctoresTextField() {

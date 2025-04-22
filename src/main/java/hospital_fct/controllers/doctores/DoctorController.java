@@ -260,7 +260,7 @@ public class DoctorController implements Initializable {
                 Doctor doctor = new Doctor();
                 doctor.setIdDoctor(resultSet.getInt("IdDoctor"));
                 doctor.setIdSector(resultSet.getInt("IdSector"));
-                doctor.setNombreDoctor(resultSet.getString("Nombre"));
+                doctor.setNombreDoctor(resultSet.getString("NombreDoctor"));
                 doctor.setApellidoDoctor(resultSet.getString("Apellido"));
                 doctor.setEmailDoctor(resultSet.getString("Email"));
                 doctor.setEspecialidad(resultSet.getString("Especialidad"));
@@ -276,14 +276,14 @@ public class DoctorController implements Initializable {
 
     public static String getString(String opcion) {
         String condicion = switch (opcion) {
-            case "Nombre" -> "WHERE Nombre LIKE ?";
+            case "Nombre" -> "WHERE Doctores.Nombre LIKE ?";
             case "Apellido" -> "WHERE Apellido LIKE ?";
             case "Especialidad" -> "WHERE Especialidad LIKE ?";
             case "Sector" -> "WHERE Sectores_Hospital.NombreSeccion LIKE ?";
             case "Email" -> "WHERE Email LIKE ?";
             default -> "WHERE 1 = 1";
         };
-        String query = "SELECT IdDoctor, Doctores.IdSector AS IdSector, Doctores.Nombre, Apellido, Especialidad, Email, Sectores_Hospital.NombreSeccion AS NombreSector " +
+        String query = "SELECT IdDoctor, Doctores.IdSector AS IdSector, Doctores.Nombre AS NombreDoctor, Apellido, Especialidad, Email, Sectores_Hospital.NombreSeccion AS NombreSector " +
                 "FROM Doctores " +
                 "JOIN Sectores_Hospital ON Sectores_Hospital.IdSector = Doctores.IdSector " +
                 "JOIN Hospital ON Sectores_Hospital.IdHospital = Hospital.IdHospital " +
