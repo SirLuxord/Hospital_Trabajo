@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Proyecto_Hospital">
+    <output-path>$PROJECT_DIR$/out/artifacts/Proyecto_Hospital</output-path>
+    <root id="root">
+      <element id="archive" name="Proyecto_Hospital.jar" />
+    </root>
+  </artifact>
+</component>

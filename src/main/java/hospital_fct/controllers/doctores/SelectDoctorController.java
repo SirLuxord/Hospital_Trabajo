@@ -48,6 +48,8 @@ public class SelectDoctorController implements Initializable {
         doctorTable.itemsProperty().bind(listaDoctor);
 
         listaDoctor.addAll(doctorController.buscarDoctor("",""));
+
+        idDoctorColumn.setVisible(false);
     }
 
     public SelectDoctorController() {

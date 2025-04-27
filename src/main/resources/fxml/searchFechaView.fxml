@@ -16,8 +16,8 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label text="Nombre: " GridPane.halignment="RIGHT" />
-      <Label text="Apellido:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+      <Label text="Primera Fecha" GridPane.halignment="RIGHT" />
+      <Label text="Segunda Fecha" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
       <DatePicker fx:id="primeraFechaDatePicker" GridPane.columnIndex="1" />
       <DatePicker fx:id="segundaFechaDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
